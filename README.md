@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz San Valentín ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+.contenedor {
+    color: white;
+    animation: aparecer 3s ease-in-out;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 22px;
+    max-width: 300px;
+}
+
+.corazon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: flotar 6s linear infinite;
+}
+
+.corazon::before,
+.corazon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.corazon::before {
+    top: -10px;
+    left: 0;
+}
+
+.corazon::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes flotar {
+    0% {
+        bottom: -10px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(100px) rotate(45deg);
+    }
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h1>❤️ Feliz San Valentín ❤️</h1>
+    <p>
+        Desde que llegaste a mi vida,
+        todo tiene más color,
+        más luz y más amor.
+        💕 Te quiero muchísimo 💕
+    </p>
+</div>
+
+<script>
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
